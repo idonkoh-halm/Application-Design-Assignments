@@ -158,6 +158,10 @@ class World ():
             b.tick()
         self.root.after(100,self.tick)
 
+#    def checkyoself(self):
+#        x,y=
+#        for b in World.balls:
+#            if self.distance(b.xcor(),b.ycor()>
         
     def run (self):
         #self.tick()
