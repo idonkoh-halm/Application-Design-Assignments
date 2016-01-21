@@ -10,7 +10,7 @@ class Ball (turtle.RawTurtle):
         self.goto(initX, initY)
         self.down()
         self.color(color)
-        self.shapesize(size)
+        self.shapesize(outline=size)
         self.shape('circle')
         self.xvel = xvel
         self.yvel = yvel
@@ -85,6 +85,12 @@ class World ():
             'Clear',
             self.onClear
             )
+        self.elasticLabel =Tkinter.Label(self.buttonBox,text='Wall Elasticity:')
+        self.elasticLabel.pack(side=Tkinter.LEFT,expand=0)
+        self.elasticscale = Tkinter.Scale(self.buttonBox, from_=0.1, to=2,orient=Tkinter.HORIZONTAL)
+        self.elasticscale.set(self.wall_elasticity)
+        self.elasticscale['command']=self.onUpdateElasticity
+        self.elasticscale.pack(side=Tkinter.LEFT,expand=0)
 
     def createButton (self, text, command):
         '''Create a button and add it to the righthand side of the button box.
@@ -99,7 +105,8 @@ class World ():
 
     def onUpdateGravity (self, *args):
         self.gravity = self.gravityScale.get()
-
+    def onUpdateElasticity (self, *args):
+        self.wall_elasticity = self.elasticscale.get()
 
     def onClear (self):
         while self.balls:
@@ -124,7 +131,7 @@ class World ():
                  initX=random.randint(0,750/2),
                  initY=750/2,
                  xvel = random.randint(-40,40),
-                 size=random.randint(1,10),
+                 size=random.randint(5,10),
                  color=self.colors[(len(self.balls)) % len(self.colors)]
                  )
         self.balls.append(b)
@@ -136,7 +143,7 @@ class World ():
                  initX=random.randint(0,750/2),
                  initY=750/2,
                  xvel = random.randint(-40,40),
-                 size=random.randint(1,20),
+                 size=random.randint(11,20),
                  color=self.colors[(len(self.balls)) % len(self.colors)]
                  )
         self.balls.append(b)
@@ -151,6 +158,7 @@ class World ():
             b.tick()
         self.root.after(100,self.tick)
 
+        
     def run (self):
         #self.tick()
         self.root.mainloop()
