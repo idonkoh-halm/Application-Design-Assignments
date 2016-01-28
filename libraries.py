@@ -8,6 +8,6 @@ def math_excercise():
     for i in range (1,101):
         squarval=math.sqrt(i)
         sqrt_table.append(squarval)
-        return sqrt_table
+    print sqrt_table    
 
 math_excercise()
