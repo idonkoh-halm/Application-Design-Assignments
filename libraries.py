@@ -10,7 +10,7 @@ def math_excercise():
         sqrt_table.append([squarval])
     print sqrt_table    
 
-math_excercise()
+#math_excercise()
 
 def csv_excercise():
     with open('sqrttable.csv','a') as csvfile:
@@ -20,4 +20,9 @@ def csv_excercise():
 
 #with file ('sqrtables.csv','w'):
     
-csv_excercise()
+#csv_excercise()
+
+from selenium import webdriver
+
+driver=webdriver.Firefox()
+driver.get('https://comeonandsl.am/')
