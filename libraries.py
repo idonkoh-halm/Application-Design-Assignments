@@ -25,4 +25,4 @@ def csv_excercise():
 from selenium import webdriver
 
 driver=webdriver.Firefox()
-driver.get('https://comeonandsl.am/')
+driver.get('https://reddit.com/r/random/top/?sort=top&t=all')
